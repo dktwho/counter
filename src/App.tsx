@@ -4,28 +4,28 @@ import {Button} from "./components/Button";
 import s from './App.module.css'
 
 function App() {
-    const initialCounterValue = 0
-    const maxValue = 5
-    const [counter, setCounter] = useState(initialCounterValue)
+    let initCountValue = 0
+    let maxCountValue = 5
+    const [counter, setCounter] = useState<number>(initCountValue)
 
 
     const increment = () => {
-        setCounter(prev => counter + 1)
-        if(counter === maxValue) {
-            setCounter(maxValue)
+        if(counter < maxCountValue) {
+            setCounter(prev => counter + 1)
         }
     }
 
     const reset = () => {
-        setCounter(initialCounterValue)
+        setCounter(initCountValue)
     }
     return (
-        <div className="App">
-            {counter}
+        <div className={s.App}>
+            <div className={ counter < maxCountValue ? s.counter : s.counterDisabled}>{counter}</div>
+            <div className={s.btnGroup}>
+                <Button className={counter < maxCountValue ? s.btnActive : s.btnDisabled  } title={'inc'} callback={increment}/>
+                <Button className={counter === initCountValue ? s.btnDisabled  : s.btnActive   } title={'reset'} callback={reset}/>
 
-            <Button className={s.btnActive} title={'inc'} callback={increment}/>
-            <Button className={s.btnDisabled} title={'reset'} callback={reset}/>
-
+            </div>
         </div>
     );
 }
