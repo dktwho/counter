@@ -1,0 +1,11 @@
+.buttonsGroup {
+
+}
+
+.btnActive {
+    background-color: greenyellow;
+}
+
+.btnDisabled {
+    background-color: red;
+}

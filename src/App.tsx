@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import {Button} from "./components/Button";
+import s from './App.module.css'
 
 function App() {
     const initialCounterValue = 0
@@ -10,6 +11,9 @@ function App() {
 
     const increment = () => {
         setCounter(prev => counter + 1)
+        if(counter === maxValue) {
+            setCounter(maxValue)
+        }
     }
 
     const reset = () => {
@@ -18,8 +22,9 @@ function App() {
     return (
         <div className="App">
             {counter}
-            <Button title={'inc'} callback={increment}/>
-            <Button title={'reset'} callback={reset}/>
+
+            <Button className={s.btnActive} title={'inc'} callback={increment}/>
+            <Button className={s.btnDisabled} title={'reset'} callback={reset}/>
 
         </div>
     );
