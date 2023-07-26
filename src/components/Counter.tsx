@@ -5,10 +5,11 @@ type CounterPropsTypre = {
     counter: number
     maxCountValue: number
 
+
 }
-export const Counter = ({counter, maxCountValue,}: CounterPropsTypre) => {
+export const Counter = ({counter, maxCountValue}: CounterPropsTypre) => {
     return (
-        <div className={counter < maxCountValue ? s.counter : s.counterDisabled}>{counter}</div>
+        <div className={counter < maxCountValue  ? s.counter : s.counterDisabled}>{counter}</div>
     );
 };
 
