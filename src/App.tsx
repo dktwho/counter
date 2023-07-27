@@ -24,10 +24,14 @@ function App() {
     }
 
     const getLocalStorageHandler = () => {
-        let counterValueFromLS = localStorage.getItem('counterValue')
-        setCounter(Number(counterValueFromLS))
-
+        let counterValueFromLSString = localStorage.getItem('counterValue')
+        if(counterValueFromLSString) {
+            let counterValueFromLSNumber = JSON.parse(counterValueFromLSString)
+            setCounter(counterValueFromLSNumber)
+        }
     }
+
+
     return (
         <div className={s.App}>
             <Counter counter={counter} maxCountValue={maxCountValue}/>
