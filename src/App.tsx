@@ -20,7 +20,7 @@ function App() {
         setCounter(initCountValue)
     }
     const setLocalStorageHandler = () => {
-        localStorage.setItem('counterValue', counter.toString())
+        localStorage.setItem('counterValue', JSON.stringify(counter))
     }
 
     const getLocalStorageHandler = () => {
