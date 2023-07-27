@@ -24,7 +24,9 @@ function App() {
     }
 
     const getLocalStorageHandler = () => {
-        console.log('get')
+        let counterValueFromLS = localStorage.getItem('counterValue')
+        setCounter(Number(counterValueFromLS))
+
     }
     return (
         <div className={s.App}>
