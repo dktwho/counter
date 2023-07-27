@@ -5,11 +5,14 @@ import s from './App.module.css'
 import {Counter} from "./components/Counter";
 
 
-
 function App() {
     let initCountValue = 0
     let maxCountValue = 5
     const [counter, setCounter] = useState<number>(initCountValue)
+
+    useEffect(() => {
+        getLocalStorageHandler()
+    }, [])
 
     useEffect(() => {
         setLocalStorageHandler()
@@ -38,8 +41,6 @@ function App() {
             setCounter(counterValueFromLSNumber)
         }
     }
-
-
 
     // const clearLocalStorageHandler = () => {
     //     localStorage.clear()
