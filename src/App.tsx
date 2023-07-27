@@ -3,7 +3,7 @@ import './App.css';
 import {Button} from "./components/Button";
 import s from './App.module.css'
 import {Counter} from "./components/Counter";
-import {Simulate} from "react-dom/test-utils";
+
 
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
     }
     const setLocalStorageHandler = () => {
         localStorage.setItem('counterValue', JSON.stringify(counter))
+        localStorage.setItem('counterValue + 1', JSON.stringify(counter + 1))
     }
 
     const getLocalStorageHandler = () => {
@@ -38,6 +39,10 @@ function App() {
         setCounter(initCountValue)
     }
 
+    const removeItemFromLocalStorageHandler = () => {
+        localStorage.removeItem('counterValue + 1')
+    }
+
 
     return (
         <div className={s.App}>
@@ -50,6 +55,7 @@ function App() {
                 <button onClick={setLocalStorageHandler}>SET to local storage</button>
                 <button onClick={getLocalStorageHandler}>GET to local storage</button>
                 <button onClick={clearLocalStorageHandler}>CLEAR to local storage</button>
+                <button onClick={removeItemFromLocalStorageHandler}>Remove Item to local storage</button>
 
             </div>
         </div>
