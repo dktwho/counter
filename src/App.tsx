@@ -16,18 +16,26 @@ function App() {
         }
     }
 
-
     const reset = () => {
         setCounter(initCountValue)
     }
+    const setLocalStorageHandler = () => {
+        localStorage.setItem('counterValue', counter.toString())
+    }
+
+    const getLocalStorageHandler = () => {
+        console.log('get')
+    }
     return (
         <div className={s.App}>
-            <Counter counter={counter} maxCountValue={maxCountValue} />
+            <Counter counter={counter} maxCountValue={maxCountValue}/>
             <div className={s.btnGroup}>
                 <Button className={counter < maxCountValue ? s.btnActive : s.btnDisabled} title={'inc'}
                         callback={increment}/>
                 <Button className={counter === initCountValue ? s.btnDisabled : s.btnActive} title={'reset'}
                         callback={reset}/>
+                <button onClick={setLocalStorageHandler}>SET to local storage</button>
+                <button onClick={getLocalStorageHandler}>GET to local storage</button>
             </div>
         </div>
     );
