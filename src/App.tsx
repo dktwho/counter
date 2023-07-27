@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Button} from "./components/Button";
 import s from './App.module.css'
@@ -11,10 +11,15 @@ function App() {
     let maxCountValue = 5
     const [counter, setCounter] = useState<number>(initCountValue)
 
+    useEffect(() => {
+        setLocalStorageHandler()
+    }, [counter])
+
 
     const increment = () => {
         if (counter < maxCountValue) {
             setCounter(prev => counter + 1)
+            localStorage.setItem('counterValue', JSON.stringify(counter))
         }
     }
 
@@ -23,7 +28,7 @@ function App() {
     }
     const setLocalStorageHandler = () => {
         localStorage.setItem('counterValue', JSON.stringify(counter))
-        localStorage.setItem('counterValue + 1', JSON.stringify(counter + 1))
+        // localStorage.setItem('counterValue + 1', JSON.stringify(counter + 1))
     }
 
     const getLocalStorageHandler = () => {
@@ -34,14 +39,16 @@ function App() {
         }
     }
 
-    const clearLocalStorageHandler = () => {
-        localStorage.clear()
-        setCounter(initCountValue)
-    }
 
-    const removeItemFromLocalStorageHandler = () => {
-        localStorage.removeItem('counterValue + 1')
-    }
+
+    // const clearLocalStorageHandler = () => {
+    //     localStorage.clear()
+    //     setCounter(initCountValue)
+    // }
+    //
+    // const removeItemFromLocalStorageHandler = () => {
+    //     localStorage.removeItem('counterValue + 1')
+    // }
 
 
     return (
@@ -52,10 +59,10 @@ function App() {
                         callback={increment}/>
                 <Button className={counter === initCountValue ? s.btnDisabled : s.btnActive} title={'reset'}
                         callback={reset}/>
-                <button onClick={setLocalStorageHandler}>SET to local storage</button>
-                <button onClick={getLocalStorageHandler}>GET to local storage</button>
-                <button onClick={clearLocalStorageHandler}>CLEAR to local storage</button>
-                <button onClick={removeItemFromLocalStorageHandler}>Remove Item to local storage</button>
+                {/*<button onClick={setLocalStorageHandler}>SET to local storage</button>*/}
+                {/*<button onClick={getLocalStorageHandler}>GET to local storage</button>*/}
+                {/*<button onClick={clearLocalStorageHandler}>CLEAR to local storage</button>*/}
+                {/*<button onClick={removeItemFromLocalStorageHandler}>Remove Item to local storage</button>*/}
 
             </div>
         </div>
