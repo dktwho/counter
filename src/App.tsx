@@ -7,7 +7,6 @@ import {Counter} from "./components/Counter";
 function App() {
     let initCountValue = 0
     let maxCountValue = 5
-    let minCountValue = -5
     const [counter, setCounter] = useState<number>(initCountValue)
 
 
@@ -17,11 +16,7 @@ function App() {
         }
     }
 
-    const decrement = () => {
-        if (counter > minCountValue) {
-            setCounter(prev => counter - 1)
-        }
-    }
+
     const reset = () => {
         setCounter(initCountValue)
     }
@@ -33,8 +28,6 @@ function App() {
                         callback={increment}/>
                 <Button className={counter === initCountValue ? s.btnDisabled : s.btnActive} title={'reset'}
                         callback={reset}/>
-                <Button className={counter > minCountValue ? s.btnActive : s.btnDisabled} title={'dec'}
-                        callback={decrement}/>
             </div>
         </div>
     );
