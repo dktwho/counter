@@ -12,6 +12,7 @@ function App() {
     const [startValue, setStartValue] = useState<number>(0)
     const [maxValue, setMaxValue] = useState<number>(5)
 
+
     useEffect(() => {
         getLocalStorageHandler()
     }, [])
@@ -56,12 +57,9 @@ function App() {
         let counterStartValueFromLSString = localStorage.getItem('counterStartValue')
         let counterMaxValueFromLSString = localStorage.getItem('counterMaxValue')
         if (counterValueFromLSString && counterStartValueFromLSString && counterMaxValueFromLSString) {
-            let counterValueFromLSNumber = JSON.parse(counterValueFromLSString)
-            let counterStartValueFromLSNumber = JSON.parse(counterStartValueFromLSString)
-            let counterMaxValueFromLSNumber = JSON.parse(counterMaxValueFromLSString)
-            setStartValue(counterStartValueFromLSNumber)
-            setMaxValue(counterMaxValueFromLSNumber)
-            setCounter(counterValueFromLSNumber)
+            setCounter(JSON.parse(counterValueFromLSString))
+            setStartValue(JSON.parse(counterStartValueFromLSString))
+            setMaxValue(JSON.parse(counterMaxValueFromLSString))
         }
     }
 

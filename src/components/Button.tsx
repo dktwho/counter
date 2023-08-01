@@ -5,14 +5,14 @@ type ButtonPropsType = {
     title: string
     callback: () => void
     className?: string
-    disabled?: boolean
+    disabled?: any
 }
 
 
-export const Button = ({title, callback, className}: ButtonPropsType) => {
+export const Button = ({title, callback, className,disabled}: ButtonPropsType) => {
 
     return (
-        <button className={className} onClick={callback}>
+        <button className={className} onClick={callback} disabled={disabled} >
             {title}
         </button>
     );

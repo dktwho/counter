@@ -11,6 +11,7 @@ type SettingType = {
     appSet: () => void
 }
 export const CounterSettings = ({startValue, maxValue, onChangeStartValue, onChangeMaxValue, appSet}: SettingType) => {
+
     return (
         <div className={s.counterSettings}>
             <div>
@@ -22,7 +23,7 @@ export const CounterSettings = ({startValue, maxValue, onChangeStartValue, onCha
             </div>
 
             <div>
-                <Button title={'set'} callback={appSet}/>
+                <Button title={'set'} callback={appSet} className={startValue || maxValue > 5  ? s.btnActive : s.btnDisabled} disabled={!startValue}/>
             </div>
 
         </div>
