@@ -3,7 +3,7 @@ import './App.css';
 import {Button} from "./components/Button";
 import s from './App.module.css'
 import {Counter} from "./components/Counter";
-
+import {CounterSettings} from "./components/CounterSettings";
 
 
 function App() {
@@ -12,14 +12,13 @@ function App() {
     const [startValue, setStartValue] = useState<number>(0)
     const [maxValue, setMaxValue] = useState<number>(5)
 
-
     useEffect(() => {
         getLocalStorageHandler()
     }, [])
 
     useEffect(() => {
         setLocalStorageHandler()
-    }, [counter])
+    }, [counter, maxValue, startValue])
 
 
     const onChangeStartValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +37,6 @@ function App() {
     }
 
 
-
     const increment = () => {
         if (counter < maxValue) {
             setCounter(prev => counter + 1)
@@ -47,18 +45,17 @@ function App() {
     }
 
     const reset = () => {
-        setCounter(initCountValue)
+        setCounter(startValue)
     }
     const setLocalStorageHandler = () => {
         localStorage.setItem('counterValue', JSON.stringify(counter))
     }
 
-
     const getLocalStorageHandler = () => {
         let counterValueFromLSString = localStorage.getItem('counterValue')
         let counterStartValueFromLSString = localStorage.getItem('counterStartValue')
         let counterMaxValueFromLSString = localStorage.getItem('counterMaxValue')
-        if (counterValueFromLSString && counterStartValueFromLSString && counterMaxValueFromLSString  ) {
+        if (counterValueFromLSString && counterStartValueFromLSString && counterMaxValueFromLSString) {
             let counterValueFromLSNumber = JSON.parse(counterValueFromLSString)
             let counterStartValueFromLSNumber = JSON.parse(counterStartValueFromLSString)
             let counterMaxValueFromLSNumber = JSON.parse(counterMaxValueFromLSString)
@@ -80,18 +77,8 @@ function App() {
 
     return (
         <div className={s.App}>
-            <div className={s.counterSettings}>
-                <div>
-                    <h3>max value:</h3><input value={maxValue} onChange={onChangeMaxValue} className={s.inputSettings} type="number"/>
-                    <h3>start value:</h3><input value={startValue} onChange={onChangeStartValue} className={s.inputSettings} type="number"/>
-                </div>
-
-                <div>
-                    <button onClick={appSet}>set</button>
-                </div>
-
-            </div>
-            <Counter  counter={counter} maxCountValue={maxValue}/>
+            <CounterSettings startValue={startValue} maxValue={maxValue}  onChangeStartValue={onChangeStartValue} onChangeMaxValue={onChangeMaxValue} appSet={appSet}/>
+            <Counter counter={counter} maxCountValue={maxValue}/>
             <div className={s.btnGroup}>
                 <Button className={counter < maxValue ? s.btnActive : s.btnDisabled} title={'inc'}
                         callback={increment}/>

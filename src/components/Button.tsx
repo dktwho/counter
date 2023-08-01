@@ -5,6 +5,7 @@ type ButtonPropsType = {
     title: string
     callback: () => void
     className?: string
+    disabled?: boolean
 }
 
 

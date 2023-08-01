@@ -89,3 +89,7 @@
 .inputSettings {
     background-color: white;
 }
+
+.inputError {
+    background-color: red;
+}
