@@ -1,14 +1,15 @@
 
 .App {
-    border-radius: 5px;
-    border: 5px solid aqua;
-    margin: 300px;
+
+    /*margin: 300px;*/
     display: flex;
     justify-content: center;
     align-items: center;
     align-content: flex-start;
-    width: 280px;
-    height: 100px;
+    /*width: 280px;*/
+    /*height: 100px;*/
+
+
 }
 
 .counter {
@@ -25,6 +26,8 @@
     margin: 5px;
     padding: 5px;
     flex: 0 1 auto;
+    flex-flow: column nowrap;
+
 
 }
 
@@ -73,4 +76,16 @@
     border-radius: 10px;
     width: 70px;
     height: 30px;
+}
+
+
+.counterSettings {
+    border-radius: 5px;
+    border: 5px solid aqua;
+    margin-top: 5px;
+    color: aqua;
+}
+
+.inputSettings {
+    background-color: white;
 }

@@ -4,7 +4,7 @@ import React from 'react';
 type ButtonPropsType = {
     title: string
     callback: () => void
-    className: string
+    className?: string
 }
 
 

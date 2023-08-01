@@ -1,14 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import './App.css';
 import {Button} from "./components/Button";
 import s from './App.module.css'
 import {Counter} from "./components/Counter";
 
 
+
 function App() {
     let initCountValue = 0
-    let maxCountValue = 5
     const [counter, setCounter] = useState<number>(initCountValue)
+    const [startValue, setStartValue] = useState<number>(0)
+    const [maxValue, setMaxValue] = useState<number>(5)
+
 
     useEffect(() => {
         getLocalStorageHandler()
@@ -19,8 +22,25 @@ function App() {
     }, [counter])
 
 
+    const onChangeStartValue = (e: ChangeEvent<HTMLInputElement>) => {
+        setStartValue(Number(e.currentTarget.value))
+    }
+
+    const onChangeMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
+        setMaxValue(Number(e.currentTarget.value))
+    }
+
+    const appSet = () => {
+        localStorage.setItem('counterMaxValue', JSON.stringify(maxValue))
+        localStorage.setItem('counterStartValue', JSON.stringify(startValue))
+        setCounter(startValue)
+        setMaxValue(maxValue)
+    }
+
+
+
     const increment = () => {
-        if (counter < maxCountValue) {
+        if (counter < maxValue) {
             setCounter(prev => counter + 1)
             localStorage.setItem('counterValue', JSON.stringify(counter))
         }
@@ -31,13 +51,19 @@ function App() {
     }
     const setLocalStorageHandler = () => {
         localStorage.setItem('counterValue', JSON.stringify(counter))
-        // localStorage.setItem('counterValue + 1', JSON.stringify(counter + 1))
     }
+
 
     const getLocalStorageHandler = () => {
         let counterValueFromLSString = localStorage.getItem('counterValue')
-        if (counterValueFromLSString) {
+        let counterStartValueFromLSString = localStorage.getItem('counterStartValue')
+        let counterMaxValueFromLSString = localStorage.getItem('counterMaxValue')
+        if (counterValueFromLSString && counterStartValueFromLSString && counterMaxValueFromLSString  ) {
             let counterValueFromLSNumber = JSON.parse(counterValueFromLSString)
+            let counterStartValueFromLSNumber = JSON.parse(counterStartValueFromLSString)
+            let counterMaxValueFromLSNumber = JSON.parse(counterMaxValueFromLSString)
+            setStartValue(counterStartValueFromLSNumber)
+            setMaxValue(counterMaxValueFromLSNumber)
             setCounter(counterValueFromLSNumber)
         }
     }
@@ -54,16 +80,24 @@ function App() {
 
     return (
         <div className={s.App}>
-            <Counter counter={counter} maxCountValue={maxCountValue}/>
+            <div className={s.counterSettings}>
+                <div>
+                    <h3>max value:</h3><input value={maxValue} onChange={onChangeMaxValue} className={s.inputSettings} type="number"/>
+                    <h3>start value:</h3><input value={startValue} onChange={onChangeStartValue} className={s.inputSettings} type="number"/>
+                </div>
+
+                <div>
+                    <button onClick={appSet}>set</button>
+                </div>
+
+            </div>
+            <Counter  counter={counter} maxCountValue={maxValue}/>
             <div className={s.btnGroup}>
-                <Button className={counter < maxCountValue ? s.btnActive : s.btnDisabled} title={'inc'}
+                <Button className={counter < maxValue ? s.btnActive : s.btnDisabled} title={'inc'}
                         callback={increment}/>
                 <Button className={counter === initCountValue ? s.btnDisabled : s.btnActive} title={'reset'}
                         callback={reset}/>
-                {/*<button onClick={setLocalStorageHandler}>SET to local storage</button>*/}
-                {/*<button onClick={getLocalStorageHandler}>GET to local storage</button>*/}
-                {/*<button onClick={clearLocalStorageHandler}>CLEAR to local storage</button>*/}
-                {/*<button onClick={removeItemFromLocalStorageHandler}>Remove Item to local storage</button>*/}
+
 
             </div>
         </div>
@@ -71,3 +105,5 @@ function App() {
 }
 
 export default App;
+
+
