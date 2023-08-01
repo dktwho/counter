@@ -6,11 +6,11 @@ import {Button} from "./Button";
 type SettingType = {
     startValue: number
     maxValue: number
-    onChangeStartValue: (e: ChangeEvent<HTMLInputElement> ) => void
+    onChangeStartValue: (e: ChangeEvent<HTMLInputElement>) => void
     onChangeMaxValue: (e: ChangeEvent<HTMLInputElement>) => void
     appSet: () => void
 }
-export const CounterSettings = ({startValue, maxValue,onChangeStartValue, onChangeMaxValue, appSet}:SettingType ) => {
+export const CounterSettings = ({startValue, maxValue, onChangeStartValue, onChangeMaxValue, appSet}: SettingType) => {
     return (
         <div className={s.counterSettings}>
             <div>

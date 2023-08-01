@@ -77,15 +77,14 @@ function App() {
 
     return (
         <div className={s.App}>
-            <CounterSettings startValue={startValue} maxValue={maxValue}  onChangeStartValue={onChangeStartValue} onChangeMaxValue={onChangeMaxValue} appSet={appSet}/>
+            <CounterSettings startValue={startValue} maxValue={maxValue} onChangeStartValue={onChangeStartValue}
+                             onChangeMaxValue={onChangeMaxValue} appSet={appSet}/>
             <Counter counter={counter} maxCountValue={maxValue}/>
             <div className={s.btnGroup}>
                 <Button className={counter < maxValue ? s.btnActive : s.btnDisabled} title={'inc'}
                         callback={increment}/>
                 <Button className={counter === initCountValue ? s.btnDisabled : s.btnActive} title={'reset'}
                         callback={reset}/>
-
-
             </div>
         </div>
     );
