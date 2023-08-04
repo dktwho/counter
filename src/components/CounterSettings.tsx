@@ -19,14 +19,14 @@ export const CounterSettings = ({startValue, maxValue, onChangeStartValue, onCha
                                           className={maxValue <= startValue ? s.inputError : s.inputSettings}
                                           type="number"/>
                 <h3>start value:</h3><input value={startValue} onChange={onChangeStartValue}
-                                            className={startValue < 0 || maxValue <= startValue  ? s.inputError : s.inputSettings}
+                                            className={startValue < 0 || maxValue <= startValue ? s.inputError : s.inputSettings}
                                             type="number"/>
             </div>
 
             <div>
                 <Button title={'set'} callback={appSet}
                         className={startValue < 0 || maxValue <= startValue ? s.btnDisabled : s.btnActive}
-                        disabled={maxValue <= startValue || startValue < 0  ? 'disabled' : ''}/>
+                        disabled={maxValue <= startValue || startValue < 0 ? 'disabled' : ''}/>
             </div>
 
         </div>

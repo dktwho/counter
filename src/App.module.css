@@ -1,6 +1,5 @@
 
 .App {
-
     /*margin: 300px;*/
     display: flex;
     justify-content: center;
@@ -8,13 +7,11 @@
     align-content: flex-start;
     /*width: 280px;*/
     /*height: 100px;*/
-
-
 }
 
-.counter {
-    width: 100px;
-    height: 40px;
+.counter div {
+    width: 200px;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,13 +24,11 @@
     padding: 5px;
     flex: 0 1 auto;
     flex-flow: column nowrap;
-
-
 }
 
-.counterDisabled {
-    width: 100px;
-    height: 40px;
+.counterDisabled div {
+    width: 200px;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,6 +75,8 @@
 
 
 .counterSettings {
+    width: 200px;
+    height: 220px;
     border-radius: 5px;
     border: 5px solid aqua;
     margin-top: 5px;
