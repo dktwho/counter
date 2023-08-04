@@ -77,7 +77,7 @@ function App() {
         <div className={s.App}>
             <CounterSettings startValue={startValue} maxValue={maxValue} onChangeStartValue={onChangeStartValue}
                              onChangeMaxValue={onChangeMaxValue} appSet={appSet}/>
-            <Counter counter={counter} maxCountValue={maxValue}/>
+            <Counter counter={counter} maxCountValue={maxValue} startValue={startValue}/>
             <div className={s.btnGroup}>
                 <Button className={counter < maxValue ? s.btnActive : s.btnDisabled} title={'inc'}
                         callback={increment}/>
