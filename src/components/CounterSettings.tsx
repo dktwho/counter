@@ -23,7 +23,8 @@ export const CounterSettings = ({startValue, maxValue, onChangeStartValue, onCha
             </div>
 
             <div>
-                <Button title={'set'} callback={appSet} className={startValue || maxValue > 5  ? s.btnActive : s.btnDisabled} disabled={!startValue}/>
+                <Button title={'set'} callback={appSet}
+                        className={startValue  < 0  ? s.btnDisabled : s.btnActive} disabled={startValue  < 0  ? 'disabled' : ''}/>
             </div>
 
         </div>
