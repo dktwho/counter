@@ -95,8 +95,6 @@ function App() {
                             callback={reset}/>
                 </div>
             </div>
-
-
         </div>
     );
 }
