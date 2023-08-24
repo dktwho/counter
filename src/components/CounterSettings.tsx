@@ -13,17 +13,18 @@ type SettingType = {
 export const CounterSettings = ({startValue, maxValue, onChangeStartValue, onChangeMaxValue, appSet}: SettingType) => {
 
     return (
+
         <div className={s.counterSettings}>
-            <div>
-                <h3>max value:</h3><input value={maxValue} onChange={onChangeMaxValue}
-                                          className={maxValue <= startValue ? s.inputError : s.inputSettings}
-                                          type="number"/>
-                <h3>start value:</h3><input value={startValue} onChange={onChangeStartValue}
-                                            className={startValue < 0 || maxValue <= startValue ? s.inputError : s.inputSettings}
-                                            type="number"/>
+            <div className={s.mainForDivWithInput}>
+                <div className={s.divWithInput}>max value: <input value={maxValue} onChange={onChangeMaxValue}
+                                                                  className={maxValue <= startValue ? s.inputError : s.inputSettings}
+                                                                  type="number"/></div>
+                <div className={s.divWithInput}>start value: <input value={startValue} onChange={onChangeStartValue}
+                                                                    className={startValue < 0 || maxValue <= startValue ? s.inputError : s.inputSettings}
+                                                                    type="number"/></div>
             </div>
 
-            <div>
+            <div className={s.btnSetter}>
                 <Button title={'set'} callback={appSet}
                         className={startValue < 0 || maxValue <= startValue ? s.btnDisabled : s.btnActive}
                         disabled={maxValue <= startValue || startValue < 0 ? 'disabled' : ''}/>

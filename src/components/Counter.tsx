@@ -10,9 +10,9 @@ export type CounterPropsType = {
 
 export const Counter = ({counter, maxCountValue, startValue}: CounterPropsType) => {
     return (
-        // <div className={counter < maxCountValue  ? s.counter : s.counterDisabled}>{counter}</div>
-        // <div className={counter < maxCountValue  ? s.counter : s.counterDisabled}>{startValue < 0 ? 'Incorrect value' : counter}</div>
-        <div className={counter < maxCountValue  ? s.counter : s.counterDisabled}><WindowCounter startValue={startValue} counter={counter} maxCountValue={maxCountValue} /></div>
+        <div className={counter < maxCountValue ? s.counter : s.counterDisabled}>
+            <WindowCounter startValue={startValue} counter={counter} maxCountValue={maxCountValue}/>
+        </div>
     );
 };
 

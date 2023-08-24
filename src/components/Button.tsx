@@ -9,12 +9,13 @@ type ButtonPropsType = {
 }
 
 
-export const Button = ({title, callback, className,disabled}: ButtonPropsType) => {
-
+export const Button = ({title, callback, className, disabled}: ButtonPropsType) => {
     return (
-        <button className={className} onClick={callback} disabled={disabled} >
-            {title}
-        </button>
+        <>
+            <button className={className} onClick={callback} disabled={disabled}>
+                {title}
+            </button>
+        </>
     );
 };
 

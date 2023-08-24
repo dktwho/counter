@@ -74,16 +74,29 @@ function App() {
 
 
     return (
-        <div className={s.App}>
-            <CounterSettings startValue={startValue} maxValue={maxValue} onChangeStartValue={onChangeStartValue}
-                             onChangeMaxValue={onChangeMaxValue} appSet={appSet}/>
-            <Counter counter={counter} maxCountValue={maxValue} startValue={startValue}/>
-            <div className={s.btnGroup}>
-                <Button className={counter < maxValue ? s.btnActive : s.btnDisabled} title={'inc'}
-                        callback={increment}/>
-                <Button className={counter === initCountValue ? s.btnDisabled : s.btnActive} title={'reset'}
-                        callback={reset}/>
+        <div>
+            <>
+                <CounterSettings
+                    startValue={startValue}
+                    maxValue={maxValue}
+                    onChangeStartValue={onChangeStartValue}
+                    onChangeMaxValue={onChangeMaxValue}
+                    appSet={appSet}/>
+            </>
+
+            <div className={s.right}>
+                <div className={s.counterBlock}>
+                    <Counter counter={counter} maxCountValue={maxValue} startValue={startValue}/>
+                </div>
+                <div className={s.btnGroup}>
+                    <Button className={counter < maxValue ? s.btnActive : s.btnDisabled} title={'inc'}
+                            callback={increment}/>
+                    <Button className={counter === initCountValue ? s.btnDisabled : s.btnActive} title={'reset'}
+                            callback={reset}/>
+                </div>
             </div>
+
+
         </div>
     );
 }
